@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="main.java.taskmanager.model.SectionType" %>
+<%@ page import="ru.taskmanager.model.SectionType" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,7 +12,7 @@
     <c:forEach items="${tasks}" var="task">
         <c:choose>
             <c:when test="${task.section == section.title}">
-                <jsp:useBean id="task" type="main.java.taskmanager.model.Task"/>
+                <jsp:useBean id="task" type="ru.taskmanager.model.Task"/>
                 <h3>${task.name}</h3>
                 <p>${task.description}</p>
             </c:when>

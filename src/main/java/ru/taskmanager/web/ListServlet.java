@@ -2,6 +2,7 @@ package ru.taskmanager.web;
 
 import ru.taskmanager.Config;
 import ru.taskmanager.model.Task;
+import ru.taskmanager.storage.SQLStorage;
 import ru.taskmanager.storage.Storage;
 
 import javax.servlet.ServletConfig;
@@ -17,7 +18,7 @@ public class ListServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        storage = Config.getInstance().getStorage();
+        storage = new SQLStorage("jdbc:postgresql://localhost:5432/tasks", "postgres", "psqkm87nm2");
     }
 
     @Override
@@ -25,7 +26,7 @@ public class ListServlet extends HttpServlet {
         String action = req.getParameter("action");
         if (action == null) {
             req.setAttribute("tasks", storage.getAll());
-            req.getRequestDispatcher("views/list.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/views/list.jsp").forward(req, resp);
             return;
         }
         switch (action) {
@@ -34,6 +35,6 @@ public class ListServlet extends HttpServlet {
                 req.setAttribute("task", task);
             }
         }
-        req.getRequestDispatcher("/views/add.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/add.jsp").forward(req, resp);
     }
 }
