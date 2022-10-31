@@ -5,7 +5,7 @@ public enum SectionType {
     FIGURE_SKATING("Фигурное катание"),
     GYMNASTIC("Гимнастика"),
     HEALTH("Здоровье"),
-    BASKETBALL("Баскетболл");
+    BASKETBALL("Баскетбол");
 
     private final String title;
 

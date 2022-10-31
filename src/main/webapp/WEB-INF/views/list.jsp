@@ -15,6 +15,8 @@
                 <jsp:useBean id="task" type="ru.taskmanager.model.Task"/>
                 <h3>${task.name}</h3>
                 <p>${task.description}</p>
+                <p><a href="list?id=${task.id}&action=edit">Изменить</a></p>
+                <p><a href="list?id=${task.id}&action=delete">Удалить</a></p>
             </c:when>
         </c:choose>
     </c:forEach>
